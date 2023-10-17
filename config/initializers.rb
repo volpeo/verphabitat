@@ -1,3 +1,5 @@
+require "bridgetown-svg-inliner"
+
 Bridgetown.configure do |config|
   # You can configure aspects of your Bridgetown site here instead of using
   # `bridgetown.config.yml`. For example:
@@ -60,4 +62,6 @@ Bridgetown.configure do |config|
 
   # For more documentation on how to configure your site using this initializers file,
   # visit: https://edge.bridgetownrb.com/docs/configuration/initializers/
+
+  init :"bridgetown-svg-inliner"
 end

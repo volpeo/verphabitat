@@ -1,0 +1,104 @@
+<div id="case-studies" class="lg:max-w-7xl px-8 mx-auto max-w-2xl pb-12 pt-16">
+
+  <div class="font-semibold text-sm text-gray-600">
+    QUELQUES ÉTUDES DE CAS
+  </div>
+
+  <div class="mt-8 max-w-3xl text-sm text-gray-500">
+    Chaque projet est unique, c'est pourquoi nous offrons un conseil personnalisé pour répondre à vos besoins spécifiques.
+    Pour mieux illustrer notre approche et le soin que nous apportons à chaque projet, découvrez ci-dessous quelques-unes de nos études de cas.
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+    <% @case_studies.each do |case_study| %>
+      <div class="flex flex-col border rounded-xl shadow-lg overflow-hidden relative" data-controller="modal" data-action="keydown.esc->modal#close" tabindex="-1">
+        <div class="flex-1 py-4 px-6">
+          <h3 class="text-xl font-semibold">
+            <%= case_study.title %>
+          </h3>
+          <ul class="mt-4 list-disc list-inside text-sm text-gray-500">
+            <% case_study.items.each do |item| %>
+              <li>
+                <%= item %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <a href="#" data-action="click->modal#open" class="text-center m-2 bg-white hover:bg-gray-50 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-600 font-bold py-3 px-6 rounded">
+          En savoir plus
+        </a>
+        <!-- Modal Background -->
+        <div class="hidden fixed inset-0 bg-black bg-opacity-80 overflow-y-auto flex items-center justify-center z-10"
+              data-modal-target="background"
+              data-action="click->modal#closeBackground"
+              data-transition-enter="transition-all ease-in-out duration-300"
+              data-transition-enter-from="bg-opacity-0"
+              data-transition-enter-to="bg-opacity-80"
+              data-transition-leave="transition-all ease-in-out duration-300"
+              data-transition-leave-from="bg-opacity-80"
+              data-transition-leave-to="bg-opacity-0">
+
+          <!-- Modal Container -->
+          <div data-modal-target="container" class="max-h-screen w-full max-w-3xl relative">
+            <!-- Modal Card -->
+            <div class="m-1 bg-white rounded-xl shadow">
+              <div class="p-8">
+                <h2 class="mb-12 mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  <%= case_study.title %>
+                </h2>
+                <div class="mb-4">
+                  <dl>
+                    <dt class="mt-6 mb-2 items-center flex space-x-2 mt-6 text-base font-semibold leading-7 text-indigo-900">
+                      <%= svg '/images/customer.svg', class: "h-5 w-5 text-indigo-800" %>
+                      <span class="uppercase">Profil du client</span>
+                    </dt>
+                    <dd class="text-xl leading-8 text-gray-700"><%= case_study.customer %></dd>
+
+                    <dt class="mt-6 mb-2 items-center flex space-x-2 mt-6 text-base font-semibold leading-7 text-indigo-900">
+                      <%= svg '/images/context.svg', class: "h-5 w-5 text-indigo-800" %>
+                      <span class="uppercase">Problématique</span>
+                    </dt>
+                    <dd class="text-xl leading-8 text-gray-700"><%= case_study.context %></dd>
+
+                    <dt class="mt-6 mb-2 items-center flex space-x-2 mt-6 text-base font-semibold leading-7 text-indigo-900">
+                      <%= svg '/images/solution.svg', class: "h-5 w-5 text-indigo-800" %>
+                      <span class="uppercase">Solution apportée</span>
+                    </dt>
+                    <dd class="text-xl leading-8 text-gray-700"><%= case_study.solution %></dd>
+                  </dl>
+                </div>
+
+                <div class="font-serif text-center mt-8 italic text-gray-500 text-xl">
+                  Cette solution <%= case_study.pricing.html_safe %>
+                </div>
+
+                <div class="flex justify-end items-center flex-wrap mt-6">
+                  <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" data-action="click->modal#close:prevent">
+                    Fermer
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col border bg-gray-50 border-dashed rounded-xl shadow-lg overflow-hidden relative">
+      <div class="flex-1 py-4 px-6">
+        <h3 class="text-xl font-semibold">
+         Votre projet
+        </h3>
+        <div class="mt-4  text-sm text-gray-500">
+          Nous nous adaptons à votre profil, à votre contexte et à vos besoins afin de vous proposer la solution la plus adaptée.
+        </div>
+      </div>
+
+      <a data-action="click->smooth-scroll#scrollTo" href="#contact" class="text-center m-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded">
+        Contactez-nous
+      </a>
+    </div>
+  </div>
+
+</div>

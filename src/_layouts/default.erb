@@ -3,13 +3,19 @@
   <head>
     <%= render "head", metadata: site.metadata, title: data.title %>
   </head>
-  <body class="<%= data.layout %> <%= data.page_class %>">
+  <body data-controller="smooth-scroll" class="bg-white <%= data.layout %> <%= data.page_class %>">
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
 
     <main>
-      <%= yield %>
+
+      <%= render Home::Hero.new %>
+      <%= render Home::Reassurance.new %>
+      <%= render Home::Solutions.new(solutions: site.data.solutions) %>
+      <%= render Home::CaseStudies.new(case_studies: site.data.case_studies, site: site) %>
+      <%= render Home::About.new %>
+      <%= render Home::Contact.new %>
     </main>
 
-    <%= render "footer", metadata: site.metadata %>
+    <%= render Shared::Footer.new %>
   </body>
 </html>

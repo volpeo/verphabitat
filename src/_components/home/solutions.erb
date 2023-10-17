@@ -1,0 +1,24 @@
+<div id="solutions" class="lg:max-w-7xl px-8 mx-auto max-w-2xl pb-12 pt-16">
+
+  <div class="mt-8 font-semibold text-sm text-gray-600">
+    VOTRE FUTURE INSTALLATION
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+    <% @solutions.each do |solution| %>
+      <div>
+        <div class="relative">
+          <img src="<%= relative_url solution.image %>" alt="<%= solution.title %>" class="aspect-[4/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
+          <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
+        </div>
+        <h3 class="mt-8 text-xl font-semibold">
+          <%= solution.title %>
+        </h3>
+        <p class="mt-4 font-sm text-gray-600">
+          <%= solution.description %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+</div>
